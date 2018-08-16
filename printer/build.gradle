@@ -1,0 +1,78 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.novoda.bintray-release'
+
+android {
+    compileSdkVersion compile_sdk_version
+    buildToolsVersion build_tools_version
+
+    defaultConfig {
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:${android_support_version}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.github.promeg:tinypinyin:1.0.0'
+    implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$base_recyclerview_adapter_helper_version"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation "com.android.support:recyclerview-v7:${android_support_version}"
+
+    implementation "com.polidea.rxandroidble2:rxandroidble:1.7.0"
+
+    implementation "com.freeler:base:1.0.1"
+    implementation "com.freeler:TitleBar:2.0.1"
+    //dialog
+    implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
+    //权限添加
+    kapt "com.github.hotchemi:permissionsdispatcher-processor:${permissions_version}"
+    implementation("com.github.hotchemi:permissionsdispatcher:${permissions_version}") {
+        // if you don't use android.app.Fragment you can exclude support for them
+        exclude module: "support-v13"
+    }
+
+}
+repositories {
+    mavenCentral()
+}
+
+//上传到jcenter
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+publish {
+    userOrg = 'youyou28888990' //用户所在组织
+    repoName = 'maven' //远程仓库名称，默认maven
+    groupId = 'com.youyou' // 包名 jcenter上的路径
+    artifactId = 'printer' // library的名字
+    publishVersion = '1.0.0' // 版本号
+    desc = 'Android ESC/POS printer' // 描述
+  //  website = 'https://github.com/freeler/IOSDialog'
+    website = 'https://github.com/youyou0101/printer'
+    bintrayUser = properties.getProperty("bintray.user") // 账户名
+    bintrayKey = properties.getProperty("bintray.apikey") // 就是API key
+    dryRun = 'false'
+}
+

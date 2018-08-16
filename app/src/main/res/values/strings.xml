@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Printer</string>
+
+    <string name="btn_print">print</string>
+</resources>
