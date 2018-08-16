@@ -1,1 +1,1 @@
-# printer
+Android ESC/POS printer
