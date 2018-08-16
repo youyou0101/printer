@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.printer.SearchBtActivity
+import com.printer.SearchBtOnReceiverActivity
 import com.printer.utils.BluetoothUtil
 import com.printer.utils.PrintUtil
 import io.reactivex.Observable
@@ -25,6 +26,12 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent()
             intent.setClass(this, SearchBtActivity::class.java)
             startActivityForResult(intent, SearchBtActivity.REQUEST_CODE_PRINT)
+        })
+
+        btn_print_on_receiver.setOnClickListener({
+            val intent = Intent()
+            intent.setClass(this, SearchBtOnReceiverActivity::class.java)
+            startActivityForResult(intent, SearchBtOnReceiverActivity.REQUEST_CODE_PRINT)
         })
     }
 

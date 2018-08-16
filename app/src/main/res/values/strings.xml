@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Printer</string>
 
-    <string name="btn_print">print</string>
+    <string name="btn_print">print(可过滤打印机)</string>
+    <string name="btn_print_on_receiver">print(通过广播接收器)</string>
+
 </resources>
