@@ -27,7 +27,6 @@ import permissions.dispatcher.NeedsPermission
 import permissions.dispatcher.RuntimePermissions
 
 /**
- * yuxiaor
  *
  * @author wsl
  * @date 2018/8/9 0009

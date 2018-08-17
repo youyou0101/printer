@@ -67,7 +67,7 @@ publish {
     repoName = 'maven' //远程仓库名称，默认maven
     groupId = 'com.youyou' // 包名 jcenter上的路径
     artifactId = 'printer' // library的名字
-    publishVersion = '1.0.2' // 版本号
+    publishVersion = '1.0.3' // 版本号
     desc = 'Android ESC/POS printer' // 描述
   //  website = 'https://github.com/freeler/IOSDialog'
     website = 'https://github.com/youyou0101/printer'
